@@ -9,6 +9,7 @@ namespace AoC2019
     {
         public static void MissionControl() 
         {
+            int[] intcodeProgramArrF = ImportIntcodeProgram();
             GravityAssistProgram(ImportIntcodeProgram());
         }
         public static int[] ImportIntcodeProgram() 
@@ -45,7 +46,7 @@ namespace AoC2019
                     int gravityAssistAns = 100 * intcodeProgramArrF[1] + intcodeProgramArrF[2];
                     Console.WriteLine("\nYOUR PROGRAM WORKED! Output value of: " + intcodeProgramArrF[0]);
                     Console.WriteLine("THE NOUN & VERB ARE: " + intcodeProgramArrF[1] + " & " + intcodeProgramArrF[2] + ", RESPECTIVELY.");
-                    Console.WriteLine("YOUR ANSWER IS: " + gravityAssistAns);
+                    Console.WriteLine("YOUR ANSWER IS: " + gravityAssistAns);                    
                     Console.ReadLine();                
                     break;
                 }
