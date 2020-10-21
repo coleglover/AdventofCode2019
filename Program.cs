@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -13,22 +13,15 @@ namespace AoC2019
             //IMPORT MODULE MASS DATA
             // convert fuel data from string[] -> float[]
             string[] moduleMassesStr = System.IO.File.ReadAllLines(@"C:\Users\Cole\source\repos\AoC2019\data\adventOfCode2019FuelData.txt");
-            float[] moduleMassesFlt = moduleMassesStr.Select(float.Parse).ToArray();
-            
+            int[] moduleMassesInt = moduleMassesStr.Select(int.Parse).ToArray();
+
             //sending module masses to Fuel Calculator Object
-            FuelCalculator fuelForModulesCalculator = new FuelCalculator(moduleMassesFlt);
-            fuelForModulesCalculator.FuelForFuelCalculator(moduleMassesFlt);
-            
-            //IMPORT INTCODE PROGRAM DATA
-            string intcodeProgramStr = System.IO.File.ReadAllText(@"C:\Users\Cole\source\repos\AoC2019\data\adventOfCode2019IntcodeProgram_working.txt");
-            int[] intcodeProgramIntArr = intcodeProgramStr.Split(',').Select(int.Parse).ToArray();
-            //List<int> intcodeProgramList
+            var day1 = FuelCalculator.CalculateFuel(moduleMassesInt);
+            var day1p2 = FuelCalculator.SumFuelForModulesAndFuel(moduleMassesInt);
 
-            //Console.WriteLine(intcodeProgramIntArr[155]);
-            IntcodeProgram opcodeHandler = new IntcodeProgram(intcodeProgramIntArr);
 
-            //Console.WriteLine(string.Join(",", intcodeProgramIntArr));
-            Console.ReadLine();
+            //INTCODE PROGRAM
+            IntcodeProgram2.GravityAssistProgram();
 
 
 
