@@ -17,14 +17,6 @@ namespace AoC2019
             string[] _wirePathA = wireCoordinatesSep[0].Split(',', StringSplitOptions.RemoveEmptyEntries);
             string[] _wirePathB = wireCoordinatesSep[1].Split(',', StringSplitOptions.RemoveEmptyEntries);
 
-            //< TEST CASE 1 - should produce 159
-            //string[] _wirePathA = { "R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72" };
-            //string[] _wirePathB = { "U62", "R66", "U55", "R34", "D71", "R55", "D58", "R83" };
-
-            //< TEST CASE 2 - should produce 135
-            //string[] _wirePathA = { "R98", "U47", "R26", "D63", "R33", "U87", "L62", "D20", "R33", "U53", "R51" };
-            //string[] _wirePathB = { "U98", "R91", "D20", "R16", "D67", "R40", "U7", "R15", "U6", "R7" };
-
             return (_wirePathA, _wirePathB);
         }
         //< Parse wire coordinates and translate them from points -> steps
@@ -109,7 +101,7 @@ namespace AoC2019
 
             return minWireIntLength;
         }
-        //< create steps between every wire coordinate 
+        //< algorithm that steps between every wire coordinate 
         public static List<(double x, double y)> GenerateSteps(List<(double x, double y)> wirePoints) 
         {
             List<(double x, double y)> wireSteps = new List<(double x, double y)>();
@@ -118,14 +110,18 @@ namespace AoC2019
             for (var i = 0; i < wirePoints.Count - 1; i++)
             {              
                 
+                //< determine the absolute distance between each wire point
                 double magnitudeX = Math.Abs(wirePoints[i + 1].x - wirePoints[i].x);
                 double magnitudeY = Math.Abs(wirePoints[i + 1].y - wirePoints[i].y);
 
+                //< determine the direction that the wire points (+/-x,+/-y)
                 double directionX = wirePoints[i + 1].x - wirePoints[i].x;
                 double directionY = wirePoints[i + 1].y - wirePoints[i].y;
 
+                //< movement in the x direction
                 if (magnitudeX != 0)
                 {                 
+                    //< //< movement in the +x direction
                     if (directionX > 0)
                     {
                         for (int j = 0; j <= magnitudeX; j++)
@@ -134,6 +130,7 @@ namespace AoC2019
                             wireSteps.Insert(index, ((wirePoints[i].x + j), wirePoints[i].y));
                         }
                     }
+                    //< //< movement in the -x direction
                     else if (directionX < 0)
                     {
                         for (int j = 0; j <= magnitudeX; j++)
@@ -144,8 +141,10 @@ namespace AoC2019
                         }
                     }
                 }
+                //< //< movement in the y direction
                 else if (magnitudeY != 0)
                 {
+                    //< //< movement in the +y direction
                     if (directionY > 0)
                     {
                         for (int j = 0; j <= magnitudeY; j++)
@@ -154,6 +153,7 @@ namespace AoC2019
                             wireSteps.Insert(index, (wirePoints[i].x, (wirePoints[i].y + j)));
                         }
                     }
+                    //< //< movement in the -y direction
                     else if (directionY < 0)
                     {
                         for (int j = 0; j <= magnitudeY; j++)
@@ -166,6 +166,7 @@ namespace AoC2019
             }
             return (wireSteps);
         }
+        //< determine how many steps a wire takes to get to a point
         public static List<int> StepCounter(List<(double x, double y)> wireSteps) 
         {
             int i = 0;
@@ -179,7 +180,8 @@ namespace AoC2019
 
             return stepCount;
         }
-
+        
+        //< translating actual steps from imports
         public static List<(double x, double y)> MoveWire(string[] wireVectors) 
         {
             List<(double x, double y)> currentPath = new List<(double x, double y)>();
