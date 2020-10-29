@@ -52,14 +52,8 @@ namespace AoC2019
         public static int FindManhattanDistance(List<(double x, double y)> wireStepsA, List<(double x, double y)> wireStepsB)
         {
             //< generate all wire intersections
-            (double x, double y)[] wireIntersections = wireStepsA.Intersect(wireStepsB).ToArray();         
-
-            //foreach ((double x, double y) intersection in wireIntersections)
-            //{
-            //    Console.WriteLine($"wires A & B crossed at: {intersection}");
-            //}           
-            //Console.WriteLine("\n");
-
+            (double x, double y)[] wireIntersections = wireStepsA.Intersect(wireStepsB).ToArray(); 
+            
             return (int)wireIntersections.Min(minDist => Math.Abs(minDist.x) + Math.Abs(minDist.y));
         }
 
