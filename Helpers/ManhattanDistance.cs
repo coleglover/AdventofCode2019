@@ -125,7 +125,7 @@ namespace AoC2019
                 double directionY = wirePoints[i + 1].y - wirePoints[i].y;
 
                 if (magnitudeX != 0)
-                {
+                {                 
                     if (directionX > 0)
                     {
                         for (int j = 0; j <= magnitudeX; j++)
