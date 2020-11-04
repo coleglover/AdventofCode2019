@@ -128,7 +128,8 @@ namespace AoC2019
         {
             List<(double x, double y)> wireSteps = new List<(double x, double y)>();
 
-            //< loop through each coordinate 
+            //< loop through each coordinate
+            //< count -1 is to avoid out of bounds error
             for (var i = 0; i < wirePoints.Count - 1; i++)
             {              
                 
