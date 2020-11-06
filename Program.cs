@@ -33,6 +33,9 @@ namespace AoC2019
             int minManhattanDistance = ManhattanDistance.FindManhattanDistance(wireStepsA, wireStepsB);
             int minWireLengthIntersect = ManhattanDistance.FindMinimumStepsIntersection(wireStepsA, wireStepsB);
             Console.WriteLine($"the minimum Manhattan distance to a crossed wire is: {minManhattanDistance}");
+            
+            int passwordCount = ElvenPassword.PasswordParser();
+            Console.WriteLine($"\nThere are {passwordCount} passwords that meet the given criteria");
             Console.ReadLine();
         }
     }
